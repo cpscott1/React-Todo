@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import TodoList from './components/TodoComponents/TodoList';
 
 const todos = [
   {
@@ -38,6 +38,7 @@ class App extends Component {
         <div className="header">
           <h1>Todo List: MVP</h1>
         </div>
+        <TodoList todos={this.state.todos}/>
       </div>
     );
   }
