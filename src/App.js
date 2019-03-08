@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 const todos = [
   {
@@ -38,6 +39,7 @@ class App extends Component {
         <div className="header">
           <h1>Todo List: MVP</h1>
         </div>
+        <TodoForm />
         <TodoList todos={this.state.todos}/>
       </div>
     );
