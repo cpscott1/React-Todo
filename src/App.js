@@ -86,7 +86,7 @@ clearCompleted = () => {
           <h1>Todo List: MVP</h1>
         </div>
         <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo}/>
-        <TodoForm todo={this.state.todo} inputHandler={this.inputHandler} addHandler={this.addHandler}/>
+        <TodoForm todo={this.state.todo} inputHandler={this.inputHandler} addHandler={this.addHandler} clearCompleted={this.clearCompleted}/>
       </div>
     );
   }
