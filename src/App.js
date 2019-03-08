@@ -29,8 +29,27 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todos
+      todos,
+      todo: ''
     };
+  }
+
+  inputHandler = event => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  addHandler = event => {
+    event.preventDefault();
+    this.setState( prevState => {
+      return {todos: [...prevState.todos, {
+        task: prevState.todo,
+        id: Date.now(),
+        completed: true
+      }
+    ],
+    todo: ''
+    }
+    })
   }
 
   render() {
@@ -39,8 +58,8 @@ class App extends Component {
         <div className="header">
           <h1>Todo List: MVP</h1>
         </div>
-        <TodoForm />
         <TodoList todos={this.state.todos}/>
+        <TodoForm todo={this.state.todo} inputHandler={this.inputHandler} addHandler={this.addHandler}/>
       </div>
     );
   }
