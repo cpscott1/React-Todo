@@ -44,7 +44,7 @@ class App extends Component {
       return {todos: [...prevState.todos, {
         task: prevState.todo,
         id: Date.now(),
-        completed: true
+        completed: false
       }
     ],
     todo: ''
@@ -52,13 +52,40 @@ class App extends Component {
     })
   }
 
+toggleTodo = (todoId) => {
+  this.setState( prevState => {
+    return {
+      todos: prevState.todos.map( todo => {
+        if(todo.id === todoId) {
+          return {
+            ...todo,
+            completed: !todo.completed
+          }
+        } else {
+          return todo;
+        }
+      })
+    }
+  })
+}
+
+clearCompleted = () => {
+  this.setState( prevState => {
+    return {
+      todos: prevState.todos.filter(todo => {
+        return !todo.completed;
+      })
+    }
+  } )
+}
+
   render() {
     return (
       <div className="container">
         <div className="header">
           <h1>Todo List: MVP</h1>
         </div>
-        <TodoList todos={this.state.todos}/>
+        <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo}/>
         <TodoForm todo={this.state.todo} inputHandler={this.inputHandler} addHandler={this.addHandler}/>
       </div>
     );

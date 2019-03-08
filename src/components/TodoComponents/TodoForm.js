@@ -10,7 +10,7 @@ export default function TodoForm(props) {
       onChange={props.inputHandler}/>
 
       <button>Add Todo</button>
-      <button>Clear completed</button>
+      <button onClick={props.clearCompleted}>Clear completed</button>
     </form>
   )
 }

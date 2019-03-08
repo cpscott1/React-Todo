@@ -7,7 +7,7 @@ export default function TodoList(props) {
     <div className="todo-list">
       {props.todos.map( todo => {
         return (
-          <Todo todo={todo}/>
+          <Todo todo={todo} toggleTodo={props.toggleTodo}/>
         )
       })}
     </div>
