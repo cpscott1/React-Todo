@@ -71,14 +71,6 @@ toggleTodo = (todoId) => {
   })
 }
 
-todoCompleted = () => {
-  this.setState( prevState => {
-    return {
-      textDecoration: prevState.todo.completed ?
-      'line-through' : 'none'
-    }
-  })
-}
 
 clearCompleted = () => {
   this.setState( prevState => {
@@ -96,7 +88,7 @@ clearCompleted = () => {
         <div className="header">
           <h1>Todo List: MVP</h1>
         </div>
-        <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo} todoCompleted={this.todoCompleted}/>
+        <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo}/>
         <TodoForm todo={this.state.todo} inputHandler={this.inputHandler} addHandler={this.addHandler} clearCompleted={this.clearCompleted}/>
       </div>
     );
