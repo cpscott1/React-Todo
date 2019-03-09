@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 
+import './components/TodoComponents/Todo.css';
+
 const todos = [
   {
     task: 'Wash the dishes',
@@ -69,6 +71,15 @@ toggleTodo = (todoId) => {
   })
 }
 
+todoCompleted = () => {
+  this.setState( prevState => {
+    return {
+      textDecoration: prevState.todo.completed ?
+      'line-through' : 'none'
+    }
+  })
+}
+
 clearCompleted = () => {
   this.setState( prevState => {
     return {
@@ -85,7 +96,7 @@ clearCompleted = () => {
         <div className="header">
           <h1>Todo List: MVP</h1>
         </div>
-        <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo}/>
+        <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo} todoCompleted={this.todoCompleted}/>
         <TodoForm todo={this.state.todo} inputHandler={this.inputHandler} addHandler={this.addHandler} clearCompleted={this.clearCompleted}/>
       </div>
     );
